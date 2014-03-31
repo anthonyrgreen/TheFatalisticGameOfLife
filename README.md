@@ -1,2 +1,4 @@
 TheFatalisticGameOfLife
 =======================
+
+Actuarial statistics toy.
