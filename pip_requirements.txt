@@ -1,0 +1,4 @@
+django
+gunicorn
+MySQL-python
+web.py

@@ -1,0 +1,93 @@
+2014-03-31 13:54:37 [1548] [INFO] Starting gunicorn 18.0
+2014-03-31 13:54:37 [1548] [DEBUG] Arbiter booted
+2014-03-31 13:54:37 [1548] [INFO] Listening at: http://127.0.0.1:8002 (1548)
+2014-03-31 13:54:37 [1548] [INFO] Using worker: sync
+2014-03-31 13:54:37 [1553] [INFO] Booting worker with pid: 1553
+2014-03-31 13:54:38 [1554] [INFO] Booting worker with pid: 1554
+2014-03-31 13:54:38 [1555] [INFO] Booting worker with pid: 1555
+2014-03-31 13:56:28 [1548] [INFO] Handling signal: term
+2014-03-31 13:56:28 [1553] [INFO] Worker exiting (pid: 1553)
+2014-03-31 13:56:28 [1554] [INFO] Worker exiting (pid: 1554)
+2014-03-31 13:56:28 [1555] [INFO] Worker exiting (pid: 1555)
+2014-03-31 13:56:28 [1548] [INFO] Shutting down: Master
+2014-03-31 13:57:38 [1600] [INFO] Starting gunicorn 18.0
+2014-03-31 13:57:38 [1600] [DEBUG] Arbiter booted
+2014-03-31 13:57:38 [1600] [INFO] Listening at: http://172.31.37.116:8002 (1600)
+2014-03-31 13:57:38 [1600] [INFO] Using worker: sync
+2014-03-31 13:57:38 [1605] [INFO] Booting worker with pid: 1605
+2014-03-31 13:57:38 [1606] [INFO] Booting worker with pid: 1606
+2014-03-31 13:57:38 [1607] [INFO] Booting worker with pid: 1607
+2014-03-31 13:59:55 [1643] [INFO] Starting gunicorn 18.0
+2014-03-31 13:59:55 [1643] [ERROR] Connection in use: ('ec2-54-186-239-29.us-west-2.compute.amazonaws.com', 8002)
+2014-03-31 13:59:55 [1643] [ERROR] Retrying in 1 second.
+2014-03-31 13:59:56 [1643] [ERROR] Connection in use: ('ec2-54-186-239-29.us-west-2.compute.amazonaws.com', 8002)
+2014-03-31 13:59:56 [1643] [ERROR] Retrying in 1 second.
+2014-03-31 13:59:57 [1643] [ERROR] Connection in use: ('ec2-54-186-239-29.us-west-2.compute.amazonaws.com', 8002)
+2014-03-31 13:59:57 [1643] [ERROR] Retrying in 1 second.
+2014-03-31 13:59:58 [1643] [ERROR] Connection in use: ('ec2-54-186-239-29.us-west-2.compute.amazonaws.com', 8002)
+2014-03-31 13:59:58 [1643] [ERROR] Retrying in 1 second.
+2014-03-31 13:59:59 [1643] [ERROR] Connection in use: ('ec2-54-186-239-29.us-west-2.compute.amazonaws.com', 8002)
+2014-03-31 13:59:59 [1643] [ERROR] Retrying in 1 second.
+2014-03-31 14:00:00 [1643] [ERROR] Can't connect to ('ec2-54-186-239-29.us-west-2.compute.amazonaws.com', 8002)
+2014-03-31 14:00:08 [1600] [INFO] Handling signal: term
+2014-03-31 14:00:08 [1605] [INFO] Worker exiting (pid: 1605)
+2014-03-31 14:00:08 [1606] [INFO] Worker exiting (pid: 1606)
+2014-03-31 14:00:08 [1607] [INFO] Worker exiting (pid: 1607)
+2014-03-31 14:00:08 [1600] [INFO] Shutting down: Master
+2014-03-31 14:00:17 [1675] [INFO] Starting gunicorn 18.0
+2014-03-31 14:00:17 [1675] [DEBUG] Arbiter booted
+2014-03-31 14:00:17 [1675] [INFO] Listening at: http://172.31.37.116:8002 (1675)
+2014-03-31 14:00:17 [1675] [INFO] Using worker: sync
+2014-03-31 14:00:17 [1680] [INFO] Booting worker with pid: 1680
+2014-03-31 14:00:17 [1681] [INFO] Booting worker with pid: 1681
+2014-03-31 14:00:17 [1682] [INFO] Booting worker with pid: 1682
+2014-03-31 14:01:16 [1675] [INFO] Handling signal: term
+2014-03-31 14:01:16 [1680] [INFO] Worker exiting (pid: 1680)
+2014-03-31 14:01:16 [1681] [INFO] Worker exiting (pid: 1681)
+2014-03-31 14:01:16 [1682] [INFO] Worker exiting (pid: 1682)
+2014-03-31 14:01:16 [1675] [INFO] Shutting down: Master
+2014-03-31 14:09:32 [1957] [INFO] Starting gunicorn 18.0
+2014-03-31 14:09:32 [1957] [DEBUG] Arbiter booted
+2014-03-31 14:09:32 [1957] [INFO] Listening at: http://172.31.37.116:8002 (1957)
+2014-03-31 14:09:32 [1957] [INFO] Using worker: sync
+2014-03-31 14:09:32 [1962] [INFO] Booting worker with pid: 1962
+2014-03-31 14:09:32 [1963] [INFO] Booting worker with pid: 1963
+2014-03-31 14:09:32 [1964] [INFO] Booting worker with pid: 1964
+2014-03-31 14:10:47 [1957] [INFO] Handling signal: term
+2014-03-31 14:10:47 [1962] [INFO] Worker exiting (pid: 1962)
+2014-03-31 14:10:47 [1963] [INFO] Worker exiting (pid: 1963)
+2014-03-31 14:10:47 [1964] [INFO] Worker exiting (pid: 1964)
+2014-03-31 14:10:47 [1957] [INFO] Shutting down: Master
+2014-03-31 14:10:50 [2169] [INFO] Starting gunicorn 18.0
+2014-03-31 14:10:50 [2169] [DEBUG] Arbiter booted
+2014-03-31 14:10:50 [2169] [INFO] Listening at: http://172.31.37.116:8002 (2169)
+2014-03-31 14:10:50 [2169] [INFO] Using worker: sync
+2014-03-31 14:10:50 [2174] [INFO] Booting worker with pid: 2174
+2014-03-31 14:10:50 [2175] [INFO] Booting worker with pid: 2175
+2014-03-31 14:10:50 [2176] [INFO] Booting worker with pid: 2176
+2014-03-31 14:10:57 [2175] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-03-31 14:10:58 [2176] [DEBUG] GET /favicon.ico
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-03-31 18:10:58 [2175] [DEBUG] GET /favicon.ico
+2014-03-31 14:13:46 [2169] [INFO] Handling signal: term
+2014-03-31 18:13:46 [2176] [INFO] Worker exiting (pid: 2176)
+2014-03-31 14:13:46 [2174] [INFO] Worker exiting (pid: 2174)
+2014-03-31 18:13:46 [2175] [INFO] Worker exiting (pid: 2175)
+2014-03-31 14:13:46 [2169] [INFO] Shutting down: Master
+2014-03-31 14:14:42 [2213] [INFO] Starting gunicorn 18.0
+2014-03-31 14:14:42 [2213] [DEBUG] Arbiter booted
+2014-03-31 14:14:42 [2213] [INFO] Listening at: http://172.31.37.116:8002 (2213)
+2014-03-31 14:14:42 [2213] [INFO] Using worker: sync
+2014-03-31 14:14:42 [2218] [INFO] Booting worker with pid: 2218
+2014-03-31 14:14:43 [2219] [INFO] Booting worker with pid: 2219
+2014-03-31 14:14:43 [2220] [INFO] Booting worker with pid: 2220
+2014-03-31 14:14:46 [2219] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-03-31 18:20:54 [2219] [DEBUG] GET /
+2014-03-31 14:26:25 [2220] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-03-31 18:26:26 [2219] [DEBUG] GET /favicon.ico
+2014-03-31 18:26:26 [2220] [DEBUG] GET /favicon.ico
+2014-03-31 14:33:28 [2218] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
