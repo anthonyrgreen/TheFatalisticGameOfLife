@@ -1,4 +1,4 @@
-ADDRESS='ec2-54-186-239-29.us-west-2.compute.amazonaws.com:8002'
+ADDRESS='unix:/home/ec2-user/gunicorn.sock'
 NUM_WORKERS=3
 LOG=server_log.txt
 source ../../../venv/bin/activate
