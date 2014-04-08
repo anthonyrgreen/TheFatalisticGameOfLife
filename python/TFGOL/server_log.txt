@@ -10,3 +10,18 @@
 2014-04-08 04:36:38 [18723] [DEBUG] GET /
 2014-04-08 00:36:40 [18722] [DEBUG] GET /
 /usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-08 04:44:16 [18722] [DEBUG] GET /
+2014-04-08 12:15:28 [18723] [DEBUG] GET /
+2014-04-08 09:47:27 [18721] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-08 13:47:27 [18722] [DEBUG] GET /favicon.ico
+2014-04-08 13:47:27 [18723] [DEBUG] GET /favicon.ico
+2014-04-08 13:59:28 [18721] [DEBUG] GET /
+2014-04-08 17:14:47 [18723] [DEBUG] GET /
+2014-04-08 17:14:48 [18722] [DEBUG] GET /favicon.ico
+2014-04-08 17:14:48 [18721] [DEBUG] GET /favicon.ico
+2014-04-08 17:45:22 [18721] [DEBUG] GET /admin/assets.txt
+2014-04-08 18:07:08 [18722] [DEBUG] GET /
+2014-04-08 18:07:08 [18723] [DEBUG] GET /favicon.ico
+2014-04-08 18:07:08 [18721] [DEBUG] GET /favicon.ico
+2014-04-08 18:07:20 [18722] [DEBUG] GET /
