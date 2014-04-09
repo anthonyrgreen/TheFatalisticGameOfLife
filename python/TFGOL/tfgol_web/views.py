@@ -29,4 +29,4 @@ def mainpage(request):
 	p.step()
 	p.step()
 
-	return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth })
+	return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth, 'job':p.career })

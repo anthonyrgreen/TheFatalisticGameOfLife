@@ -962,3 +962,189 @@ NameError: global name 'age' is not defined
 2014-04-08 20:50:30 [22790] [DEBUG] GET /
 2014-04-08 16:50:32 [22791] [DEBUG] GET /favicon.ico
 /usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-08 18:17:20 [22789] [DEBUG] GET /wp-login.php
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-08 22:17:20 [22791] [DEBUG] GET /blog/wp-login.php
+2014-04-08 22:17:21 [22789] [DEBUG] GET /wp/wp-login.php
+2014-04-08 22:17:21 [22790] [DEBUG] GET /wordpress/wp-login.php
+2014-04-08 22:17:22 [22789] [DEBUG] GET /journal/wp-login.php
+2014-04-08 22:18:00 [22789] [DEBUG] HEAD /
+2014-04-08 22:18:00 [22789] [DEBUG] Ignoring EPIPE
+2014-04-08 23:07:01 [22790] [DEBUG] GET /wp-login.php
+2014-04-08 23:07:01 [22791] [DEBUG] GET /blog/wp-login.php
+2014-04-08 23:07:01 [22790] [DEBUG] GET /wp/wp-login.php
+2014-04-08 23:07:02 [22791] [DEBUG] GET /wordpress/wp-login.php
+2014-04-08 23:07:03 [22790] [DEBUG] GET /journal/wp-login.php
+2014-04-09 04:09:42 [22790] [DEBUG] GET /
+2014-04-09 04:09:42 [22789] [DEBUG] GET /favicon.ico
+2014-04-09 04:09:42 [22790] [DEBUG] GET /favicon.ico
+2014-04-09 04:20:48 [22790] [DEBUG] GET /w00tw00t.at.blackhats.romanian.anti-sec:)
+2014-04-09 04:20:49 [22789] [DEBUG] GET /phpMyAdmin/scripts/setup.php
+2014-04-09 04:20:49 [22790] [DEBUG] GET /phpmyadmin/scripts/setup.php
+2014-04-09 04:20:49 [22789] [DEBUG] GET /pma/scripts/setup.php
+2014-04-09 04:20:50 [22790] [DEBUG] GET /myadmin/scripts/setup.php
+2014-04-09 04:20:50 [22789] [DEBUG] GET /MyAdmin/scripts/setup.php
+2014-04-09 00:35:27 [22784] [INFO] Handling signal: term
+2014-04-09 04:35:27 [22789] [INFO] Worker exiting (pid: 22789)
+2014-04-09 04:35:27 [22790] [INFO] Worker exiting (pid: 22790)
+2014-04-09 04:35:27 [22791] [INFO] Worker exiting (pid: 22791)
+2014-04-09 00:35:28 [22784] [INFO] Shutting down: Master
+2014-04-09 00:35:28 [24430] [INFO] Starting gunicorn 18.0
+2014-04-09 00:35:28 [24430] [DEBUG] Arbiter booted
+2014-04-09 00:35:28 [24430] [INFO] Listening at: unix:/home/ec2-user/gunicorn.sock (24430)
+2014-04-09 00:35:28 [24430] [INFO] Using worker: sync
+2014-04-09 00:35:28 [24435] [INFO] Booting worker with pid: 24435
+2014-04-09 00:35:28 [24436] [INFO] Booting worker with pid: 24436
+2014-04-09 00:35:28 [24437] [INFO] Booting worker with pid: 24437
+2014-04-09 00:35:37 [24437] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/handlers/base.py", line 101, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/urlresolvers.py", line 318, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/urlresolvers.py", line 346, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/urlresolvers.py", line 341, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/TFGOL/urls.py", line 4, in <module>
+    from tfgol_web import views
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/views.py", line 7, in <module>
+    from tfgol_web.person import Person
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/person.py", line 3, in <module>
+    import roll_age
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/roll_age.py", line 1, in <module>
+    from person import Person
+ImportError: cannot import name Person
+2014-04-09 00:36:36 [24430] [INFO] Handling signal: term
+2014-04-09 00:36:36 [24435] [INFO] Worker exiting (pid: 24435)
+2014-04-09 00:36:36 [24436] [INFO] Worker exiting (pid: 24436)
+2014-04-09 04:36:36 [24437] [INFO] Worker exiting (pid: 24437)
+2014-04-09 00:36:36 [24430] [INFO] Shutting down: Master
+2014-04-09 00:36:37 [24454] [INFO] Starting gunicorn 18.0
+2014-04-09 00:36:37 [24454] [DEBUG] Arbiter booted
+2014-04-09 00:36:37 [24454] [INFO] Listening at: unix:/home/ec2-user/gunicorn.sock (24454)
+2014-04-09 00:36:37 [24454] [INFO] Using worker: sync
+2014-04-09 00:36:37 [24459] [INFO] Booting worker with pid: 24459
+2014-04-09 00:36:37 [24460] [INFO] Booting worker with pid: 24460
+2014-04-09 00:36:37 [24461] [INFO] Booting worker with pid: 24461
+2014-04-09 00:36:38 [24460] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/handlers/base.py", line 101, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/urlresolvers.py", line 318, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/urlresolvers.py", line 346, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/urlresolvers.py", line 341, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/TFGOL/urls.py", line 4, in <module>
+    from tfgol_web import views
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/views.py", line 7, in <module>
+    from tfgol_web.person import Person
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/person.py", line 4, in <module>
+    import roll_death
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/roll_death.py", line 1, in <module>
+    from person import Person
+ImportError: cannot import name Person
+2014-04-09 00:38:02 [24454] [INFO] Handling signal: term
+2014-04-09 00:38:02 [24459] [INFO] Worker exiting (pid: 24459)
+2014-04-09 04:38:02 [24460] [INFO] Worker exiting (pid: 24460)
+2014-04-09 00:38:02 [24461] [INFO] Worker exiting (pid: 24461)
+2014-04-09 00:38:02 [24454] [INFO] Shutting down: Master
+2014-04-09 00:38:02 [24480] [INFO] Starting gunicorn 18.0
+2014-04-09 00:38:02 [24480] [DEBUG] Arbiter booted
+2014-04-09 00:38:02 [24480] [INFO] Listening at: unix:/home/ec2-user/gunicorn.sock (24480)
+2014-04-09 00:38:02 [24480] [INFO] Using worker: sync
+2014-04-09 00:38:02 [24485] [INFO] Booting worker with pid: 24485
+2014-04-09 00:38:02 [24486] [INFO] Booting worker with pid: 24486
+2014-04-09 00:38:02 [24487] [INFO] Booting worker with pid: 24487
+2014-04-09 00:38:03 [24486] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/views.py", line 29, in mainpage
+    p.step()
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/person.py", line 52, in step
+    self.age = roll_age(self)
+TypeError: 'module' object is not callable
+2014-04-09 00:42:59 [24480] [INFO] Handling signal: term
+2014-04-09 00:42:59 [24485] [INFO] Worker exiting (pid: 24485)
+2014-04-09 04:42:59 [24486] [INFO] Worker exiting (pid: 24486)
+2014-04-09 00:42:59 [24487] [INFO] Worker exiting (pid: 24487)
+2014-04-09 00:42:59 [24480] [INFO] Shutting down: Master
+2014-04-09 00:42:59 [24528] [INFO] Starting gunicorn 18.0
+2014-04-09 00:42:59 [24528] [DEBUG] Arbiter booted
+2014-04-09 00:42:59 [24528] [INFO] Listening at: unix:/home/ec2-user/gunicorn.sock (24528)
+2014-04-09 00:42:59 [24528] [INFO] Using worker: sync
+2014-04-09 00:42:59 [24533] [INFO] Booting worker with pid: 24533
+2014-04-09 00:42:59 [24534] [INFO] Booting worker with pid: 24534
+2014-04-09 00:42:59 [24535] [INFO] Booting worker with pid: 24535
+2014-04-09 00:43:01 [24534] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/Django-1.6.2-py2.6.egg/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/tfgol_web/views.py", line 32, in mainpage
+    return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth, 'job':p.job })
+AttributeError: Person instance has no attribute 'job'
+2014-04-09 00:43:28 [24528] [INFO] Handling signal: term
+2014-04-09 00:43:28 [24533] [INFO] Worker exiting (pid: 24533)
+2014-04-09 04:43:28 [24534] [INFO] Worker exiting (pid: 24534)
+2014-04-09 00:43:28 [24535] [INFO] Worker exiting (pid: 24535)
+2014-04-09 00:43:28 [24528] [INFO] Shutting down: Master
+2014-04-09 00:43:29 [24549] [INFO] Starting gunicorn 18.0
+2014-04-09 00:43:29 [24549] [DEBUG] Arbiter booted
+2014-04-09 00:43:29 [24549] [INFO] Listening at: unix:/home/ec2-user/gunicorn.sock (24549)
+2014-04-09 00:43:29 [24549] [INFO] Using worker: sync
+2014-04-09 00:43:29 [24554] [INFO] Booting worker with pid: 24554
+2014-04-09 00:43:29 [24555] [INFO] Booting worker with pid: 24555
+2014-04-09 00:43:29 [24556] [INFO] Booting worker with pid: 24556
+2014-04-09 00:43:30 [24555] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-09 00:43:41 [24556] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-09 04:43:42 [24555] [DEBUG] GET /
+2014-04-09 04:43:43 [24556] [DEBUG] GET /
+2014-04-09 04:43:43 [24555] [DEBUG] GET /
+2014-04-09 04:43:44 [24556] [DEBUG] GET /
+2014-04-09 04:43:44 [24555] [DEBUG] GET /
+2014-04-09 00:46:34 [24549] [INFO] Handling signal: term
+2014-04-09 00:46:34 [24554] [INFO] Worker exiting (pid: 24554)
+2014-04-09 04:46:34 [24555] [INFO] Worker exiting (pid: 24555)
+2014-04-09 04:46:34 [24556] [INFO] Worker exiting (pid: 24556)
+2014-04-09 00:46:34 [24549] [INFO] Shutting down: Master
+2014-04-09 00:46:34 [24583] [INFO] Starting gunicorn 18.0
+2014-04-09 00:46:34 [24583] [DEBUG] Arbiter booted
+2014-04-09 00:46:34 [24583] [INFO] Listening at: unix:/home/ec2-user/gunicorn.sock (24583)
+2014-04-09 00:46:34 [24583] [INFO] Using worker: sync
+2014-04-09 00:46:34 [24588] [INFO] Booting worker with pid: 24588
+2014-04-09 00:46:34 [24589] [INFO] Booting worker with pid: 24589
+2014-04-09 00:46:34 [24590] [INFO] Booting worker with pid: 24590
+2014-04-09 00:46:37 [24589] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-09 00:46:42 [24590] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-09 04:46:43 [24589] [DEBUG] GET /
+2014-04-09 04:46:44 [24590] [DEBUG] GET /
+2014-04-09 04:46:45 [24589] [DEBUG] GET /
+2014-04-09 04:46:46 [24590] [DEBUG] GET /
+2014-04-09 04:46:46 [24589] [DEBUG] GET /
+2014-04-09 04:46:47 [24590] [DEBUG] GET /
+2014-04-09 04:46:48 [24589] [DEBUG] GET /
+2014-04-09 04:46:49 [24590] [DEBUG] GET /
+2014-04-09 04:46:50 [24589] [DEBUG] GET /
+2014-04-09 00:46:54 [24588] [DEBUG] GET /
+/usr/lib/python2.6/site-packages/setuptools-3.4.1-py2.6.egg/pkg_resources.py:1031: UserWarning: /home/ec2-user/.python-eggs is writable by group/others and vulnerable to attack when used with get_resource_filename. Consider a more secure location (set with .set_extraction_path or the PYTHON_EGG_CACHE environment variable).
+2014-04-09 04:46:55 [24589] [DEBUG] GET /
+2014-04-09 04:46:59 [24588] [DEBUG] GET /

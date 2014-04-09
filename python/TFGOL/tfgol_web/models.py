@@ -19,3 +19,7 @@ class WorksIn(models.Model):
 	zip = models.ForeignKey('ZipCode')
 	job = models.ForeignKey('Job')
 	percent = models.FloatField()
+
+
+#class DataModel(models.Model):
+#	(WIP) new table containing all data
