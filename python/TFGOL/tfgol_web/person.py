@@ -1,4 +1,4 @@
-from models import ZipCode, Job, WorksIn
+from models import ZipCode, Job, WorksIn, DeathChance
 import random
 import roll
 
@@ -51,3 +51,9 @@ class Person:
 		self.income = roll.income(self)
 		self.networth = roll.networth(self)
 		# etc (TODO)
+	
+	def roll_age(self):
+		if(prob_death(self))
+			self.dead = True
+		else
+			self.age++
