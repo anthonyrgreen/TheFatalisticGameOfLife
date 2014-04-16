@@ -8,22 +8,33 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link type="text/css" rel="stylesheet" href="http://jqueryui.com/themes/base/jquery.ui.all.css">
-	<link type="text/css" rel="stylesheet" href="d3/src/css/graph.css">
-	<link type="text/css" rel="stylesheet" href="d3/src/css/detail.css">
-	<link type="text/css" rel="stylesheet" href="d3/src/css/legend.css">
-	<link type="text/css" rel="stylesheet" href="d3/src/css/lines.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
-	<script src="d3/vendor/d3.min.js"></script>
-	<script src="d3/vendor/d3.layout.min.js"></script>
-	<script src="d3/rickshaw.min.js"></script>
-	<script src="d3/rickshaw.js"></script>
+
 
 	<style>
-		.rickshaw_graph .detail .x_label { display: none }
-		.rickshaw_graph .detail .item { line-height: 1.4; padding: 0.5em }
-		.detail_swatch { float: right; display: inline-block; width: 10px; height: 10px; margin: 0 4px 0 0 }
+		div.chart_container, div.year_info { display: inline; }
+		.graphdata{
+			float: left;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		.yeardata{
+			clear: both;
+			margin-left:auto;
+			margin-right:auto;
+			width:50%;
+			height: 100px;
+			border-style:solid;
+			border-width:1px;
+		}
+		body {
+			margin: 0px;
+			padding: 0px;
+		}
+		#container {
+			width : 1000px;
+			height: 384px;
+			margin: 8px auto;
+		}
 	</style>
 
 </header>
@@ -35,64 +46,83 @@
 	<p>Income - {{ income }}</p>
 	<p>Networth - {{ networth }}</p>
 	<p>Job - {{ job }}</p>
-<div id="chart_container">
-	<div id="chart"></div>
-	<div id="legend_container">
-		<div id="smoother" title="Smoothing"></div>
-		<div id="legend"></div>
+	<div id="container" class = "graphdata"></div>
+	<div id="hover_info" class = "graphdata"></div>
+	
+     <script type="text/javascript" src="flotr2/flotr2.min.js"></script>
+     <script type="text/javascript">
+	 (function basic_bars(container) {
+		var lifespan = 0,
+			max_lifespan = 120;
+
+		//calculates prob. of dying at each age
+		for (var dead = false; !dead; lifespan++) {
+			if(Math.pow(lifespan/max_lifespan, 6) > Math.random())
+				dead = true;
+		} 
+		var
+			d1 = [],
+			// First data series
+			d2 = [],
+			// Second data series
+			d3 = [],
+			point, // Data point variable declaration
+			i;
+
+		for (i = 0; i < lifespan; i++) {
+			//point = [x, y]
+			//without a shift of 0.5 to the right, bar i would be centered at x=i
+			point = [i+0.5, 1000000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/140)];
+			d1.push(point);
+
+			point = [i+0.5, 500000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/130)];
+			d2.push(point);
+			
+			d3.push("Engineer");
+		};
+
+		// Draw the graph
+		Flotr.draw(
+		container, [d1, d2], {
+			bars: {
+				show: true,
+				horizontal: false,
+				shadowSize: 0,
+				barWidth: 0.9
+			},
+			mouse: {
+				track: true,
+				relative: true,
+				trackFormatter: function (obj) {
+					var year = parseInt(obj.x);
+					document.getElementById("hover_info").innerHTML = "Age: " + year + '<br>';
+					document.getElementById("hover_info").innerHTML += "Net Worth: $" + parseInt(d1[year][1]) + '<br>';
+					document.getElementById("hover_info").innerHTML += "Annual Salary: $" + parseInt(d2[year][1]) + '<br>';
+					document.getElementById("hover_info").innerHTML += "Occupation: " + d3[year];
+					return null;
+				}
+			},
+			yaxis: {
+				showLabels: false,
+				min: 0,
+				max: 1000000
+			}
+		});
+		
+		Flotr.EventAdapter.observe(container, 'flotr:click', function(position) {
+			// may consider adding a conditional for y-values so only detects when a bar is clicked
+			var year = parseInt(position.x);
+			document.getElementById("click_info").innerHTML = "Age: " + year + '<br>';
+			document.getElementById("click_info").innerHTML += "Net Worth: $" + parseInt(d1[year][1]) + '<br>';
+			document.getElementById("click_info").innerHTML += "Annual Salary: $" + parseInt(d2[year][1]) + '<br>';
+			document.getElementById("click_info").innerHTML += "Occupation: " + d3[year];
+		});
+})(document.getElementById("container"));
+     </script>
 	</div>
-	<div id="slider"></div>
-</div>
-
-<script>
-var lifespan = 0;
-var max_lifespan = 120;
-
-//calculates prob. of dying at each age
-for (var dead = false; !dead; lifespan++) {
-	if(Math.pow(lifespan/max_lifespan, 6) > Math.random())
-		dead = true;
-} 
-
-var seriesData = [ [] ]; // add more arrays for more bars/year
-var random = new Rickshaw.Fixtures.RandomData(150);
-
-for (var i = 1; i <= lifespan; i++) {
-	//add (random-ish) coordinates to graph 
-	seriesData[0].push({x:i, y: 1000000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/140)});
-}
-
-// instantiate our graph
-
-var graph = new Rickshaw.Graph( {
-	element: document.getElementById("chart"),
-	width: 8 * lifespan,
-	height: 300,
-	renderer: 'bar',
-	series: [
-            {
-            	color: "#bb0000",
-            	data: seriesData[0],
-            	name: 'Net Worth',
-            }
-    	]
-} );
-
-var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-	graph: graph,
-	formatter: function(series, x, y) {
-		var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>';
-		var content = swatch + series.name + ": $" + parseInt(y);
-		content += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Age: ' + x;
-		return content;	
-	}
-} );
-
-var axes = new Rickshaw.Graph.Axis.X( {
-	graph: graph
-} );
-
-graph.render();
+	<div id="click_info" class = "yeardata">
+		
+	</div>
 </script>
 </body>
 </html>
