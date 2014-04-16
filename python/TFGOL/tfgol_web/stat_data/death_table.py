@@ -199,7 +199,8 @@ death = {(Male,0) : 0.00699,
 (Male,99) : 0.336919,
 (Female,99) : 0.282504,
 (Male,100) : 1,
-(Female,100) : 1}
+(Female,100) : 1,
+0:0}
 
-def death(gender, age):
+def get_death(gender, age):
 	return death[(gender, age)]
