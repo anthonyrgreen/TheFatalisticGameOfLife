@@ -9,8 +9,6 @@ def death(person):
 	return False
 
 def income_growth(person):
-	# TODO some statistical change from db
-	# for now growthrate remains constant
 	return person.income_growthrate
 
 def income(person):

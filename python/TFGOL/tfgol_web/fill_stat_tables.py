@@ -50,8 +50,8 @@ def fill_death():
 			death = csv.reader(sheet)
 			death.next()
 			for row in death:
-				table.write("(Male," + row[0] + ") : " + row[1] + ",\n")
-				table.write("(Female," + row[0] + ") : " + row[2] + ",\n")
+				table.write('("Male",' + row[0] + ") : " + row[1] + ",\n")
+				table.write('("Female",' + row[0] + ") : " + row[2] + ",\n")
 			table.write("0:0}\n\n")
 			func = '''def get_death(gender, age):
 	return death[(gender, age)]'''
