@@ -46,83 +46,166 @@
 	<p>Income - {{ income }}</p>
 	<p>Networth - {{ networth }}</p>
 	<p>Job - {{ job }}</p>
+	<p><button id="reroll" type="button" onclick="reroll()">Re-roll</button></p>
+	
 	<div id="container" class = "graphdata"></div>
 	<div id="hover_info" class = "graphdata"></div>
-	
      <script type="text/javascript" src="flotr2/flotr2.min.js"></script>
      <script type="text/javascript">
-	 (function basic_bars(container) {
-		var lifespan = 0,
+	 var
+			networth = [],
+			// First data series
+			income = [],
+			// Second data series
+			occupation = [],
+			gender = [],
+			saved_year = -1, // latest year to be saved, not overwritten by a re-roll
+							 // if this = -1, all data will be re-rolled
+			
+			changed = false;
+			// User has made changes to the graph
+			
+	GenderEnum = {
+		MALE : 0,
+		FEMALE : 1	
+	}
+			
+	 function clear_info() {
+		// clears hover info and click info upon re-roll
+		document.getElementById("hover_info").style.display = 'none';
+		document.getElementById("click_info").style.display = 'none';
+	 }
+	 function reroll(){
+		// we check to see if the user is okay with overwriting
+		// their changes to the graph
+		if(changed) {
+			var r=confirm("Are you sure you want to re-roll?\nYour changes will be overwritten.");
+			if(r){
+				changed = false;
+				saved_year = -1;
+				clear_info();
+				gen_new_data();
+			}
+		}
+		else {
+			clear_info();
+			gen_new_data();
+		}
+	 }
+	 
+	 function click_data(year) {		
+		document.getElementById("click_info").style.display = 'block';
+		document.getElementById("gender_menu")[gender[year]].selected = true;
+		document.getElementById("age_info").innerHTML = year;
+		/*document.getElementById("click_info").innerHTML += "Net Worth: $" + parseInt(networth[year][1]) + '<br>';
+		document.getElementById("click_info").innerHTML += "Annual Salary: $" + parseInt(income[year][1]) + '<br>';
+		document.getElementById("click_info").innerHTML += "Occupation: " + occupation[year];
+		*/
+	 }
+	 
+	 function save_and_reroll(){
+		changed = true;
+		saved_year = parseInt(document.getElementById("age_info").innerHTML);
+		gender[saved_year] = document.getElementById("gender_menu").selectedIndex;
+		gen_new_data();
+	 
+	 }
+	 
+	 function gen_new_data(){
+			networth.length = saved_year + 1,
+			// Clear first data series
+			income.length = saved_year + 1,
+			// Clear second data series
+			occupation.length = saved_year + 1;
+			gender.length = saved_year + 1;
+			var lifespan = saved_year,
 			max_lifespan = 120;
 
-		//calculates prob. of dying at each age
-		for (var dead = false; !dead; lifespan++) {
-			if(Math.pow(lifespan/max_lifespan, 6) > Math.random())
-				dead = true;
-		} 
-		var
-			d1 = [],
-			// First data series
-			d2 = [],
-			// Second data series
-			d3 = [],
-			point, // Data point variable declaration
-			i;
+			//calculates prob. of dying at each age
+			for (var dead = false; !dead; lifespan++) {
+				if(Math.pow(lifespan/max_lifespan, 6) > Math.random())
+					dead = true;
+			} 
+			var
+				point, // Data point variable declaration
+				i;
 
-		for (i = 0; i < lifespan; i++) {
-			//point = [x, y]
-			//without a shift of 0.5 to the right, bar i would be centered at x=i
-			point = [i+0.5, 1000000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/140)];
-			d1.push(point);
+			for (i = saved_year+1; i < lifespan; i++) {
+				//point = [x, y]
+				//without a shift of 0.5 to the right, bar i would be centered at x=i
+				point = [i+0.5, 1000000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/140)];
+				networth.push(point);
 
-			point = [i+0.5, 500000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/130)];
-			d2.push(point);
-			
-			d3.push("Engineer");
-		};
-
-		// Draw the graph
-		Flotr.draw(
-		container, [d1, d2], {
-			bars: {
-				show: true,
-				horizontal: false,
-				shadowSize: 0,
-				barWidth: 0.9
-			},
-			mouse: {
-				track: true,
-				relative: true,
-				trackFormatter: function (obj) {
-					var year = parseInt(obj.x);
-					document.getElementById("hover_info").innerHTML = "Age: " + year + '<br>';
-					document.getElementById("hover_info").innerHTML += "Net Worth: $" + parseInt(d1[year][1]) + '<br>';
-					document.getElementById("hover_info").innerHTML += "Annual Salary: $" + parseInt(d2[year][1]) + '<br>';
-					document.getElementById("hover_info").innerHTML += "Occupation: " + d3[year];
-					return null;
+				point = [i+0.5, 500000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/130)];
+				income.push(point);
+				
+				occupation.push("Engineer");
+				
+				// if this is the first roll (no changes), picks a gender
+				// else, uses same gender as previous year
+				if(saved_year < 0 && i == 0)
+					gender.push((Math.random() > 0.5) ? GenderEnum.MALE : GenderEnum.FEMALE);
+				else
+					gender.push(gender[gender.length - 1]);
+			};
+			// Draw the graph
+			Flotr.draw(
+			container, [networth, income], {
+				bars: {
+					show: true,
+					horizontal: false,
+					shadowSize: 0,
+					barWidth: 0.9
+				},
+				mouse: {
+					track: true,
+					relative: true,
+					// hover tracker
+					trackFormatter: function (obj) {
+						var year = parseInt(obj.x);
+						document.getElementById("hover_info").style.display = 'block';
+						document.getElementById("hover_info").innerHTML = "Age: " + year + '<br>';
+						document.getElementById("hover_info").innerHTML += "Net Worth: $" + parseInt(networth[year][1]) + '<br>';
+						document.getElementById("hover_info").innerHTML += "Annual Salary: $" + parseInt(income[year][1]) + '<br>';
+						document.getElementById("hover_info").innerHTML += "Occupation: " + occupation[year];
+						return null;
+					}
+				},
+				yaxis: {
+					showLabels: false,
+					min: 0,
+					max: 1000000
 				}
-			},
-			yaxis: {
-				showLabels: false,
-				min: 0,
-				max: 1000000
-			}
-		});
-		
-		Flotr.EventAdapter.observe(container, 'flotr:click', function(position) {
-			// may consider adding a conditional for y-values so only detects when a bar is clicked
-			var year = parseInt(position.x);
-			document.getElementById("click_info").innerHTML = "Age: " + year + '<br>';
-			document.getElementById("click_info").innerHTML += "Net Worth: $" + parseInt(d1[year][1]) + '<br>';
-			document.getElementById("click_info").innerHTML += "Annual Salary: $" + parseInt(d2[year][1]) + '<br>';
-			document.getElementById("click_info").innerHTML += "Occupation: " + d3[year];
-		});
+			});
+			
+			Flotr.EventAdapter.observe(container, 'flotr:click', function(position) {
+				var year = parseInt(position.x);
+				if(year >= 0 && year < lifespan){
+					click_data(year);
+				}
+			});
+	 }
+	 
+	 (function basic_bars(container) {
+		gen_new_data();
 })(document.getElementById("container"));
+
+	
+
      </script>
 	</div>
 	<div id="click_info" class = "yeardata">
-		
+		Age: <div id="age_info"></div>
+		Gender:
+		<select id="gender_menu">
+		  <option>Male</option>
+		  <option>Female</option>
+		</select>
+		<br>
+		<button id="save_and_reroll_button" type="button" onclick="save_and_reroll()">Save and Re-roll</button>
 	</div>
-</script>
+	<script>
+		clear_info();
+	</script>
 </body>
 </html>
