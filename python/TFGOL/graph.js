@@ -12,7 +12,24 @@ changed = false;
 	document.getElementById("hover_info").innerHTML = '';
 	document.getElementById("click_info").style.display = 'none';
  }
-
+ function reroll(){
+	// we check to see if the user is okay with overwriting
+	// their changes to the graph
+	if(changed) {
+		var r=confirm("Are you sure you want to re-roll?\nYour changes will be overwritten.");
+		if(r){
+			changed = false;
+			clear_info();
+			gen_new_data(-1);
+			draw_graph();
+		}
+	}
+	else {
+		clear_info();
+		gen_new_data(-1);
+		draw_graph();
+	}
+ }
  
  function click_data(year) {		
 	//document.getElementById("click_info").style.display = 'block';
@@ -88,7 +105,3 @@ function draw_graph () {
 	});
  }
 	 
-	 (function basic_bars(container) {
-		gen_new_data(-1);
-		draw_graph();
-})(document.getElementById("container"));
