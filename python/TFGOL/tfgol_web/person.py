@@ -53,7 +53,7 @@ class Person:
 		# etc (TODO)
 	
 	def roll_age(self):
-		if(prob_death(self))
+		if(prob_death(self)):
 			self.dead = True
-		else
-			self.age++
+		else:
+			self.age = self.age + 1
