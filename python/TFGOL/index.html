@@ -11,29 +11,39 @@
 
 
 	<style>
-		div.chart_container, div.year_info { display: inline; }
 		.graphdata{
+			background-color:#eeeeee;
 			float: left;
-			margin-left:auto;
-			margin-right:auto;
+			margin-left: 1%;
+			height: 100%;
 		}
-		.yeardata{
-			clear: both;
-			margin-left:auto;
-			margin-right:auto;
-			width:50%;
-			height: 100px;
-			border-style:solid;
-			border-width:1px;
+		.main{
+			background-color: #eeeeee;
+			margin-left: auto;
+			margin-right: auto;
+			width: 1200px;
+			height: 450px;
+			border-style: solid;
+			border-width: 0px;
+		}
+		html {
+		}
+		.c {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			text-align:center;
 		}
 		body {
+			background-color:white;
 			margin: 0px;
 			padding: 0px;
 		}
 		#container {
-			width : 1000px;
-			height: 384px;
-			margin: 8px auto;
+			background-color:#eeeeee;
+			width : 80%;
+			height: 100%;
+			margin-left: 0px;
 		}
 	</style>
 
@@ -41,160 +51,36 @@
 
 <body>
 
-	<h1>Hello, {{ name }}</h1>
-
-	<p>Income - {{ income }}</p>
-	<p>Networth - {{ networth }}</p>
-	<p>Job - {{ job }}</p>
-	<p><button id="reroll" type="button" onclick="reroll()">Re-roll</button></p>
-	
-	<div id="container" class = "graphdata"></div>
-	<div id="hover_info" class = "graphdata"></div>
+	<div class="c"><h1>Hello, {{ name }}</h1>
+	<p><button id="reroll" type="button" onclick="reroll()">Re-roll</button></p></div>
+	<div id="main" class = "main">
+		<div id="container" class = "graphdata"></div>
+		<div id="hover_info" class = "graphdata"></div>
+	</div>
      <script type="text/javascript" src="flotr2/flotr2.min.js"></script>
-     <script type="text/javascript">
-	 var
-			networth = [],
-			// First data series
-			income = [],
-			// Second data series
-			occupation = [],
-			gender = [],
-			saved_year = -1, // latest year to be saved, not overwritten by a re-roll
-							 // if this = -1, all data will be re-rolled
-			
-			changed = false;
-			// User has made changes to the graph
-			
-	GenderEnum = {
-		MALE : 0,
-		FEMALE : 1	
-	}
-			
-	 function clear_info() {
-		// clears hover info and click info upon re-roll
-		document.getElementById("hover_info").style.display = 'none';
-		document.getElementById("click_info").style.display = 'none';
-	 }
-	 function reroll(){
+	 <script type="text/javascript" src="roll_data.js"></script>
+     <script type="text/javascript" src="graph.js"></script>
+	 <script>
+	  function reroll(){
 		// we check to see if the user is okay with overwriting
 		// their changes to the graph
 		if(changed) {
 			var r=confirm("Are you sure you want to re-roll?\nYour changes will be overwritten.");
 			if(r){
 				changed = false;
-				saved_year = -1;
 				clear_info();
-				gen_new_data();
+				gen_new_data(-1);
+				draw_graph();
 			}
 		}
 		else {
 			clear_info();
-			gen_new_data();
+			gen_new_data(-1);
+			draw_graph();
 		}
-	 }
-	 
-	 function click_data(year) {		
-		document.getElementById("click_info").style.display = 'block';
-		document.getElementById("gender_menu")[gender[year]].selected = true;
-		document.getElementById("age_info").innerHTML = year;
-		/*document.getElementById("click_info").innerHTML += "Net Worth: $" + parseInt(networth[year][1]) + '<br>';
-		document.getElementById("click_info").innerHTML += "Annual Salary: $" + parseInt(income[year][1]) + '<br>';
-		document.getElementById("click_info").innerHTML += "Occupation: " + occupation[year];
-		*/
-	 }
-	 
-	 function save_and_reroll(){
-		changed = true;
-		saved_year = parseInt(document.getElementById("age_info").innerHTML);
-		gender[saved_year] = document.getElementById("gender_menu").selectedIndex;
-		gen_new_data();
-	 
-	 }
-	 
-	 function gen_new_data(){
-			networth.length = saved_year + 1,
-			// Clear first data series
-			income.length = saved_year + 1,
-			// Clear second data series
-			occupation.length = saved_year + 1;
-			gender.length = saved_year + 1;
-			var lifespan = saved_year,
-			max_lifespan = 120;
-
-			//calculates prob. of dying at each age
-			for (var dead = false; !dead; lifespan++) {
-				if(Math.pow(lifespan/max_lifespan, 6) > Math.random())
-					dead = true;
-			} 
-			var
-				point, // Data point variable declaration
-				i;
-
-			for (i = saved_year+1; i < lifespan; i++) {
-				//point = [x, y]
-				//without a shift of 0.5 to the right, bar i would be centered at x=i
-				point = [i+0.5, 1000000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/140)];
-				networth.push(point);
-
-				point = [i+0.5, 500000*(Math.random()*.2 + 0.8)*Math.sin((i*Math.PI)/130)];
-				income.push(point);
-				
-				occupation.push("Engineer");
-				
-				// if this is the first roll (no changes), picks a gender
-				// else, uses same gender as previous year
-				if(saved_year < 0 && i == 0)
-					gender.push((Math.random() > 0.5) ? GenderEnum.MALE : GenderEnum.FEMALE);
-				else
-					gender.push(gender[gender.length - 1]);
-			};
-			// Draw the graph
-			Flotr.draw(
-			container, [networth, income], {
-				bars: {
-					show: true,
-					horizontal: false,
-					shadowSize: 0,
-					barWidth: 0.9
-				},
-				mouse: {
-					track: true,
-					relative: true,
-					// hover tracker
-					trackFormatter: function (obj) {
-						var year = parseInt(obj.x);
-						document.getElementById("hover_info").style.display = 'block';
-						document.getElementById("hover_info").innerHTML = "Age: " + year + '<br>';
-						document.getElementById("hover_info").innerHTML += "Net Worth: $" + parseInt(networth[year][1]) + '<br>';
-						document.getElementById("hover_info").innerHTML += "Annual Salary: $" + parseInt(income[year][1]) + '<br>';
-						document.getElementById("hover_info").innerHTML += "Occupation: " + occupation[year];
-						return null;
-					}
-				},
-				yaxis: {
-					showLabels: false,
-					min: 0,
-					max: 1000000
-				}
-			});
-			
-			Flotr.EventAdapter.observe(container, 'flotr:click', function(position) {
-				var year = parseInt(position.x);
-				if(year >= 0 && year < lifespan){
-					click_data(year);
-				}
-			});
-	 }
-	 
-	 (function basic_bars(container) {
-		gen_new_data();
-})(document.getElementById("container"));
-
-	
-
-     </script>
-	</div>
-	<div id="click_info" class = "yeardata">
+	}
+	 </script>
+	<div id="click_info">
 		Age: <div id="age_info"></div>
 		Gender:
 		<select id="gender_menu">
