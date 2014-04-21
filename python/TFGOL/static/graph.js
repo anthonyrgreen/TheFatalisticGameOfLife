@@ -56,6 +56,7 @@ changed = false;
 					person_life.push(person_year);
 				}
 				draw_graph();
+				console.log("drawn")
 			}
 		});
 		//gen_new_data(-1);
@@ -93,6 +94,8 @@ function draw_graph () {
 	var d1 = [],
 		d2 = [];
 	for(var i = 0; i < person_life.length; i++) {
+		console.log("DRAW_GRAPH: person_life[" + i "].networth = " + person_life[i].networth.toString());
+		console.log("DRAW_GRAPH: person_life[" + i "].income = " + person_life[i].income.toString());
 		d1.push([i+0.5, person_life[i].networth]);
 		d2.push([i+0.5, person_life[i].income])
 	}
