@@ -29,11 +29,11 @@
 				document.getElementById("gender_img").innerHTML = '<img src="/images/female.png" width="60px" height="60px"/>';
 		}
 		function toggle_race() {
-			new_race++;
-			if(new_race > RaceEnum.HISPANIC)
-				new_race = RaceEnum.WHITE;
+			//new_race++;
+			//if(new_race > RaceEnum.HISPANIC)
+			//	new_race = RaceEnum.WHITE;
 			
-			document.getElementById("race_div").innerHTML = race_string[new_race];
+			//document.getElementById("race_div").innerHTML = race_string[new_race];
 		}
 		document.addEventListener('keydown', function(event) {
 			  // left
@@ -54,8 +54,8 @@
 </header>
 
 <body onresize="draw_graph()">
-	<div class="c"><h1>Hello, {{ name }}</h1>
-	<p><button id="reroll" type="button" onclick="reroll()">Re-roll</button></p></div>
+	<div class="c"><h1 id="name_header">...</h1></div>
+	<div class="c"><p><button id="reroll" type="button" onclick="reroll()">Roll Again</button></p></div>
 		<div id="main" class = "main">
 		<div id="container" class = "graphdata"></div>
 		<div id="hover_info" class = "graphdata"></div>
@@ -76,7 +76,7 @@
 				<div id="age_div" style="font-size:150%"></div>
 			</div>
 			<div class="modal_elt" style="cursor:pointer;" onclick="toggle_race()" onmousedown="this.style.background='#cccccc'" onmouseup="this.style.background='#eeeeee'">Race
-				<div id="race_div" style="font-size:150%"></div>
+				<div id="race_div" style="font-size:150%"><input type="text" id="race_box" value=""></input></div>
 			</div>
 		</div>
 		<div style="position:relative;width:100%;top:10px;">
@@ -84,7 +84,7 @@
 				<div id="occupation_div" style="font-size:150%"></div>
 			</div>
 			<div class="modal_elt">Salary
-				<div id="income_div" style="font-size:150%;color:green"></div>
+				<div id="income_div" style="font-size:150%;color:green"><input type="text" id="income_box" value=""></input></div>
 			</div>
 			<div class="modal_elt">Net Worth
 				<div id="networth_div" style="font-size:150%;color:green"></div>
@@ -104,7 +104,7 @@
 	</div>
 	<script>	
 	 (function basic_bars(container) {
-		gen_new_data(-1);
+		reroll();
 		draw_graph();
 	 })(document.getElementById("container"));
 		clear_info();

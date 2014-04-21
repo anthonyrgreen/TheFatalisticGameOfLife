@@ -22,7 +22,7 @@ def randomZip():
 
 def mainpage(request):
 
-	return render(request, 'index.html', { 'name': 'carl' })
+	return render(request, 'index.html', {})
 
 def person_from_birth(request):
 	average_joe = person()

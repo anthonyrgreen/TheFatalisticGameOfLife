@@ -56,7 +56,8 @@ changed = false;
 				//var data = eval("(function(){return " + data + ";})()");
 				//var data = JSON.parse(ndata);
 				var data = ndata;
-					console.log( " data.count " + data.length.toString());
+				console.log( " data.count " + data.length.toString());
+				$( "#name_header" ).text("Hello, " + data[0]["name"].toString() + "");
 				//console.log("objJSON is how long?" + objJSON.length.toString());
 				//var item = data.list;
 				person_life.length = 0;
@@ -89,7 +90,6 @@ changed = false;
     return str.join('.');
 }
  function load_year(year) {
-	current_year = year;
 	
 	// hides arrows when at max/min age
 	if(current_year == person_life.length - 1)
@@ -105,9 +105,9 @@ changed = false;
 	
 	document.getElementById("modal_title").innerHTML = person_life[year].name;
 	document.getElementById("age_div").innerHTML = year;
-	document.getElementById("race_div").innerHTML = race_string[person_life[year].race];
+	$("#race_box").val( person_life[year].race );
 	document.getElementById("occupation_div").innerHTML = person_life[year].occupation;
-	document.getElementById("income_div").innerHTML = '$' + add_commas(parseInt(person_life[year].income));
+	$("#income_box").val(person_life[year].income);
 	document.getElementById("networth_div").innerHTML = '$' + add_commas(parseInt(person_life[year].networth));
 	
 	new_gender = !person_life[year].gender;
@@ -120,7 +120,7 @@ changed = false;
 	load_year(year);
 	document.getElementById("overlay").style.display = 'block';
 	document.getElementById("modal").style.display = 'block';
-	document.getElementById("gender_menu")[person_life[year].gender].selected = true;
+//	document.getElementById("gender_menu")[person_life[year].gender].selected = true;
 	document.getElementById("age_info").innerHTML = year;
  }
  
@@ -138,8 +138,8 @@ function hover(year) {
 	document.getElementById("hover_info").style.display = 'table-row-group';
 	document.getElementById("hover_info").innerHTML = "<b>Name</b> " + person_life[year].name + '<br>';
 	document.getElementById("hover_info").innerHTML += "<b>Age</b> " + year + '<br>';
-	document.getElementById("hover_info").innerHTML += "<b>Gender</b> " + gender_string[person_life[year].gender] + '<br>';
-	document.getElementById("hover_info").innerHTML += "<b>Race</b> " + race_string[person_life[year].race] + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Gender</b> " + person_life[year].gender + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Race</b> " + person_life[year].race + '<br>';
 	document.getElementById("hover_info").innerHTML += "<b>Salary</b> $" + parseInt(person_life[year].income) + '<br>';
 	document.getElementById("hover_info").innerHTML += "<b>Net Worth</b> $" + parseInt(person_life[year].networth) + '<br>';
 	document.getElementById("hover_info").innerHTML += "<b>Occupation</b> " + person_life[year].occupation;
@@ -151,8 +151,8 @@ function draw_graph () {
 		d2 = [];
 	console.log("person_life.length: " + person_life.length.toString());
 	for(var i = 0; i < person_life.length; i++) {
-		console.log("DRAW_GRAPH: person_life[" + i + "].networth = " + person_life[i].networth.toString());
-		console.log("DRAW_GRAPH: person_life[" + i + "].income = " + person_life[i].income.toString());
+//		console.log("DRAW_GRAPH: person_life[" + i + "].networth = " + person_life[i].networth.toString());
+//		console.log("DRAW_GRAPH: person_life[" + i + "].income = " + person_life[i].income.toString());
 		d1.push([i+0.5, person_life[i].networth]);
 		d2.push([i+0.5, person_life[i].income])
 	}
@@ -180,9 +180,9 @@ function draw_graph () {
 		},
 		yaxis: {
 			noTicks: 0,
-			showLabels: false,
+			showLabels: true,
 			min: 0,
-			max: 1000000
+			max: 500000
 		},
 		grid: {
 			outlineWidth: 0
