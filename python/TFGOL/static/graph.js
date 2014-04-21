@@ -20,14 +20,38 @@ changed = false;
 		if(r){
 			changed = false;
 			clear_info();
-			gen_new_data(-1);
-			draw_graph();
+			$.ajax({
+				type: "POST",
+				url: "/reroll",
+				dataType: "json",
+				success: function(data){
+					var item = data.list;
+					for(var i = 0; i < data.count; i++){
+						person_life.push(data[i]);
+					}
+					draw_graph()
+				}
+			}
+			//gen_new_data(-1);
+			//draw_graph();
 		}
 	}
-	else {
-		clear_info();
-		gen_new_data(-1);
-		draw_graph();
+	else{
+		clear_info();	
+		$.ajax({
+			type: "POST",
+			url: "/roll",
+			dataType: "json",
+			success: function(data){
+				var item = data.list;
+				for(var i = 0; i < data.count; i++){
+					person_life.push(data[i]);
+				}
+				draw_graph()
+			}
+		}
+		//gen_new_data(-1);
+		//draw_graph();
 	}
  }
  
