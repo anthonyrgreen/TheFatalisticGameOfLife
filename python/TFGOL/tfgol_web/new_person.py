@@ -21,7 +21,13 @@ class person:
 		self.alive = True
 		self.income_percentile = random.uniform(0, 1)
 	def from_midlife(self, data):
-		
+		self.gender = data["gender"]
+		self.race = data["race"]
+		self.name = data["name"]
+		self.income = int(data["income"])
+		self.age = int(data["age"])
+		self.alive = True
+		self.income_percentile = random.uniform(0, 1)
 	def roll_race(self):
 		# These stats come from the wiki page for "Demographics of the United States"
 		# -- note that the Hispanic population is over-represented by about 3% because 
