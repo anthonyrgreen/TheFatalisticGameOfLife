@@ -1,15 +1,9 @@
 import distributions as dist
 import random
+import json
 
 class person:
 	def __init__(self):
-		random.seed()
-		self.gender = self.roll_gender()
-		self.race = self.roll_race()
-		self.income = 0
-		self.age = 0
-		self.alive = True
-		self.income_percentile = random.uniform(0, 1)
 		# The below is a measure of the average an individual can be expected to move
 		# around in the percentile spread of incomes -- in other words, if 
 		# avg_inc_change = .04, then that means the average person can be expected to
@@ -17,8 +11,17 @@ class person:
 		# This should eventually be replaced with something tied to educational ach-
 		# ievment.
 		self.avg_inc_change = .04
-		print("I am a " + self.race + " " + self.gender + " in the " \
-		+ str(100*self.income_percentile) + "th income percentile")
+	def from_womb(self):
+		random.seed()
+		self.gender = self.roll_gender()
+		self.race = self.roll_race()
+		self.name = self.roll_name()
+		self.income = 0
+		self.age = 0
+		self.alive = True
+		self.income_percentile = random.uniform(0, 1)
+	def from_midlife(self, data):
+		
 	def roll_race(self):
 		# These stats come from the wiki page for "Demographics of the United States"
 		# -- note that the Hispanic population is over-represented by about 3% because 
@@ -41,6 +44,8 @@ class person:
 			return "Male"
 		else:
 			return "Female"
+	def roll_name(self):
+		return "Alice"
 	def roll_birthday(self):
 		if(random.uniform(0, 1) < dist.death_prob(self.gender, self.age)):
 			return False
@@ -63,7 +68,7 @@ class person:
 			self.income_percentile = income_percentile_f(self.income)
 			self.income_percentile += random.gauss(0, self.avg_inc_change)
 			if(self.income_percentile > 1):
-				self.income_percentile = 1
+				self.income_percentile = .999999999999
 			elif(self.income_percentile < 0):
 				self.income_percentile = 0
 			# Compute new income
@@ -78,7 +83,3 @@ class person:
 	def print_state(self):
 		print("At age " + str(self.age) + ", I am in the " + str(100*self.income_percentile) + \
 		"th percentile. I make " + str(self.income) + " a year")
-
-test_person = person()
-while(test_person.alive):
-	test_person.step_year()
