@@ -8,9 +8,11 @@ changed = false;
 // User has made changes to the graph
 
  function clear_info() {
-	// clears hover info and click info upon re-roll
+// clears hover info and click info upon re-roll
 	document.getElementById("hover_info").innerHTML = '';
-	document.getElementById("click_info").style.display = 'none';
+	document.getElementById("overlay").style.display = 'none';
+	document.getElementById("modal").style.display = 'none';
+	using_editor = false;
  }
  function reroll(){
 	// we check to see if the user is okay with overwriting
@@ -73,20 +75,61 @@ changed = false;
 		//draw_graph();
 	}
  }
+  function add_commas(num) {
+    var str = num.toString().split('.');
+    if (str[0].length >= 5) {
+        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (str[1] && str[1].length >= 5) {
+        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+    }
+    return str.join('.');
+}
+ function load_year(year) {
+	current_year = year;
+	
+	// hides arrows when at max/min age
+	if(current_year == person_life.length - 1)
+		document.getElementById("right_arrow").style.display = 'none';
+	else 
+		document.getElementById("right_arrow").style.display = 'block';
+		
+	if(current_year == 0)
+		document.getElementById("left_arrow").style.display = 'none';
+	else 
+		document.getElementById("left_arrow").style.display = 'block';
+	
+	
+	document.getElementById("modal_title").innerHTML = person_life[year].name;
+	document.getElementById("age_div").innerHTML = year;
+	document.getElementById("race_div").innerHTML = race_string[person_life[year].race];
+	document.getElementById("occupation_div").innerHTML = person_life[year].occupation;
+	document.getElementById("income_div").innerHTML = '$' + add_commas(parseInt(person_life[year].income));
+	document.getElementById("networth_div").innerHTML = '$' + add_commas(parseInt(person_life[year].networth));
+	
+	new_gender = !person_life[year].gender;
+	toggle_gender();
+	new_race = person_life[year].race;
+ }
  
- function click_data(year) {		
-	//document.getElementById("click_info").style.display = 'block';
+ function click_data(year) {
+	using_editor = true;
+	load_year(year);
+	document.getElementById("overlay").style.display = 'block';
+	document.getElementById("modal").style.display = 'block';
 	document.getElementById("gender_menu")[person_life[year].gender].selected = true;
 	document.getElementById("age_info").innerHTML = year;
  }
  
  function save_and_reroll(){
 	changed = true;
-	saved_year = parseInt(document.getElementById("age_info").innerHTML);
-	gender[saved_year] = document.getElementById("gender_menu").selectedIndex;
-	gen_new_data(saved_year);
+	person_life[current_year].gender = new_gender;
+	person_life[current_year].race = new_race;
+	gen_new_data(current_year);
 	draw_graph();
+	clear_info();
  }
+
 
 function hover(year) {
 	document.getElementById("hover_info").style.display = 'table-row-group';
