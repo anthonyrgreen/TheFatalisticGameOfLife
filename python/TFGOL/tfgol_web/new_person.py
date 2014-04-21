@@ -75,7 +75,7 @@ class person:
 			self.income_percentile = income_percentile_f(self.income)
 			self.income_percentile += random.gauss(0, self.avg_inc_change)
 			if(self.income_percentile > 1):
-				self.income_percentile = .999999999999
+				self.income_percentile = .99
 			elif(self.income_percentile < 0):
 				self.income_percentile = 0
 			# Compute new income
