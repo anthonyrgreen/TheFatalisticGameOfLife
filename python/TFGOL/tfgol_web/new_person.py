@@ -52,7 +52,7 @@ class person:
 		else:
 			return "Female"
 	def roll_name(self):
-		return "Alice"
+		return dist.get_name(self.gender)
 	def roll_birthday(self):
 		if(random.uniform(0, 1) < dist.death_prob(self.gender, self.age)):
 			return False
