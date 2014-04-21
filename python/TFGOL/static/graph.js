@@ -22,7 +22,7 @@ changed = false;
 			clear_info();
 			$.ajax({
 				type: "GET",
-				url: "/reroll",
+				url: "/reroll/",
 				dataType: "json",
 				success: function(data){
 					var item = data.list;
@@ -40,7 +40,7 @@ changed = false;
 		clear_info();	
 		$.ajax({
 			type: "GET",
-			url: "/roll",
+			url: "/roll/",
 			dataType: "json",
 			success: function(data){
 				var item = data.list;
