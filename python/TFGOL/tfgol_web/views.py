@@ -4,7 +4,7 @@ from models import ZipCode, Job, WorksIn
 from django.db.models import Sum
 
 import random
-from tfgol_web.person import Person
+from tfgol_web.new_person import Person
 
 # Create your views here.
 
@@ -33,7 +33,7 @@ def mainpage(request):
 
 def person_from_birth(request):
 	average_joe = person()
-	average_oe.from_womb()
+	average_joe.from_womb()
 	response = json.dumps(average_joe.life_data(), separators=(',', ': '))
 	return HttpResponse(response, mimetype="application/json")
 
