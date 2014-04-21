@@ -90,6 +90,7 @@ class person:
 		data = []
 		while(self.alive):
 			data.append({
+				"age":self.age,
 				"gender":self.gender,
 				"race":self.race,
 				"name":self.name,
