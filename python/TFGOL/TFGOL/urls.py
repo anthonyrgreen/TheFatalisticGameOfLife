@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^about/', views.aboutpage),
 	url(r'^disclaimer/', views.disclaimerpage),
-	url(r'^roll/', views.person_from_birth,
-	url(r'^reroll/', views.person_from_midlife)
-    url(r'^', views.mainpage),
+	url(r'^roll/', views.person_from_birth),
+	url(r'^reroll/', views.person_from_midlife),
+    url(r'^', views.mainpage)
 )
