@@ -51,8 +51,10 @@ changed = false;
 			url: "/roll/",
 			dataType: "json",
 			success: function(data){
+				var data = eval("(function(){return " + data + ";})()");
+				console.log("objJSON is how long?" + objJSON.length.toString());
 				person_life.length = data[0]["age"]
-				var item = data.list;
+				//var item = data.list;
 				for(var i = 0; i < data.count; i++){
 					var person_year = new Person_Year();
 					person_year.name = data[i]["name"];
