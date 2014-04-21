@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from models import ZipCode, Job, WorksIn
 from django.db.models import Sum
+import json
 
 import random
 from tfgol_web.person import Person
+from tfgol_web.new_person import person
 
 # Create your views here.
 
@@ -30,3 +33,18 @@ def mainpage(request):
 	p.step()
 
 	return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth, 'job':p.career })
+
+def person_from_birth(request):
+	average_joe = person()
+	joe.from_womb()
+#	response = JsonResponse(joe.life_data())
+	response = json.dumps(joe.life_data(), separators=(',', ': '))
+	return render(request, 'index.html', joe.response)
+
+def person_from_midlife(request):
+	data = json.loads(request.body)
+	average_joe = person()
+	joe.from_midlife(data)
+	response = json.dumps(joe.life_data(), separators=(',', ': '))
+	return render(request, 'index.html', joe.response)
+	response = json.dumps(joe.
