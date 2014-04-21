@@ -1,13 +1,81 @@
 body {
-	font-family: "Times New Roman"
-	background-color:#dbdbdb
+	font-family: Helvetica, Geneva, sans-serif;
+	background-color:#dbdbdb;
 }
 
 h1 {
-	font-family: Helvetica, Geneva, Arial, sans-serif
+	font-family: Helvetica, Geneva, Arial, sans-serif;
+	font-size:22pt;
 }
 
-p {
-	font-family: "Times New Roman"
+h2 {
+	font-family: Helvetica, Geneva, Arial, sans-serif;
+	font-size:16pt;
+	color:#bbbbbb;
 }
 
+.p {
+	border-width:20px;
+	font-family: "Times New Roman";
+	text-align:left;
+}
+
+.click{
+	background-color:#eeeeee;
+	
+	}
+.graphdata{
+	background-color:#eeeeee;
+	float: left;
+	margin-left: 1%;
+	height: 100%;
+	font-family:Helvetica,Geneva,Arial,sans-serif
+}
+.main{
+	background-color: #eeeeee;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	height: 75%;
+	border-style: solid;
+	border-width: 0px;
+}
+html {
+	height: 100%;
+}
+.c {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+}
+
+.tblctr {
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+}
+
+.d {
+	width: 80%;
+	height: 15%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+	font-family:Helvetica,Geneva,Arial,sans-serif
+	font-size: 7pt;
+}
+
+body {
+	height: 100%;
+	background-color:white;
+	margin: 0px;
+	padding: 0px;
+}
+#container {
+	cursor: pointer;
+	background-color:#eeeeee;
+	width : 80%;
+	height: 100%;
+	margin-left: 0px;
+}

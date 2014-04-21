@@ -46,14 +46,14 @@ changed = false;
  }
 
 function hover(year) {
-	document.getElementById("hover_info").style.display = 'block';
-	document.getElementById("hover_info").innerHTML = "Name: " + person_life[year].name + '<br>';
-	document.getElementById("hover_info").innerHTML += "Age: " + year + '<br>';
-	document.getElementById("hover_info").innerHTML += "Gender: " + gender_string[person_life[year].gender] + '<br>';
-	document.getElementById("hover_info").innerHTML += "Race: " + race_string[person_life[year].race] + '<br>';
-	document.getElementById("hover_info").innerHTML += "Annual Salary: $" + parseInt(person_life[year].income) + '<br>';
-	document.getElementById("hover_info").innerHTML += "Net Worth: $" + parseInt(person_life[year].networth) + '<br>';
-	document.getElementById("hover_info").innerHTML += "Occupation: " + person_life[year].occupation;
+	document.getElementById("hover_info").style.display = 'table-row-group';
+	document.getElementById("hover_info").innerHTML = "<b>Name</b> " + person_life[year].name + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Age</b> " + year + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Gender</b> " + gender_string[person_life[year].gender] + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Race</b> " + race_string[person_life[year].race] + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Salary</b> $" + parseInt(person_life[year].income) + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Net Worth</b> $" + parseInt(person_life[year].networth) + '<br>';
+	document.getElementById("hover_info").innerHTML += "<b>Occupation</b> " + person_life[year].occupation;
 }
  
  

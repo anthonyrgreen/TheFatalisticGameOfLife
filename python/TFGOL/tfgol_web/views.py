@@ -30,3 +30,9 @@ def mainpage(request):
 	p.step()
 
 	return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth, 'job':p.career })
+
+def aboutpage(request):
+	return render(request, 'about.html',{})
+
+def disclaimerpage(request):
+	return render(request, 'disclaimer.html',{})
