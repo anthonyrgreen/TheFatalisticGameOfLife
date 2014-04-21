@@ -37,19 +37,11 @@ function Person_Year () {
 
  function gen_new_data(saved_year){
  // for a new person from birth, use 
- 
- 
 	person_life.length = saved_year + 1;
- 
 	var age = saved_year+1;
-	
 	for (var dead = false; !dead; age++) {
-	
 		if(Math.pow(age/120, 6) > Math.random())
 			dead = true;
-		
-		
-		
 		var person_year = new Person_Year ();
 		person_year.name = "Steve";		
 		person_year.occupation = "Engineer";
