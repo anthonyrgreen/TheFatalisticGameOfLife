@@ -86,6 +86,18 @@ class person:
 		else:
 			self.age = self.age + 1
 			self.roll_income()
+	def life_data(self):
+		data = []
+		while(self.alive):
+			data.append({
+				"gender":self.gender,
+				"race":self.race,
+				"name":self.name,
+				"income":self.income,
+				"networth":1000000
+			})
+			self.step_year()
+		return data
 	def print_state(self):
 		print("At age " + str(self.age) + ", I am in the " + str(100*self.income_percentile) + \
 		"th percentile. I make " + str(self.income) + " a year")
