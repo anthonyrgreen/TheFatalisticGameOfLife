@@ -52,12 +52,15 @@ changed = false;
 			type: "GET",
 			url: "/roll/",
 			dataType: "json",
-			success: function(data){
-				var data = eval("(function(){return " + data + ";})()");
-				console.log("objJSON is how long?" + objJSON.length.toString());
-				person_life.length = data[0]["age"]
+			success: function(ndata){
+				//var data = eval("(function(){return " + data + ";})()");
+				//var data = JSON.parse(ndata);
+				var data = ndata;
+					console.log( " data.count " + data.length.toString());
+				//console.log("objJSON is how long?" + objJSON.length.toString());
 				//var item = data.list;
-				for(var i = 0; i < data.count; i++){
+				person_life.length = 0;
+				for(var i = 0; i < data.length; i++){
 					var person_year = new Person_Year();
 					person_year.name = data[i]["name"];
 					person_year.gender = data[i]["gender"];

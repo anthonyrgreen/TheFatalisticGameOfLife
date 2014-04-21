@@ -27,7 +27,7 @@ def mainpage(request):
 def person_from_birth(request):
 	average_joe = person()
 	average_joe.from_womb()
-	response = json.dumps(average_joe.life_data(), separators=(',', ': '))
+	response = json.dumps(average_joe.life_data() )#, separators=(',', ': '))
 	return HttpResponse(response, mimetype="application/json")
 
 def person_from_midlife(request):

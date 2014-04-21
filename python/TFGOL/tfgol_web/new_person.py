@@ -11,6 +11,7 @@ class person:
 		# This should eventually be replaced with something tied to educational ach-
 		# ievment.
 		self.avg_inc_change = .04
+		self.networth = 0
 	def from_womb(self):
 		random.seed()
 		self.gender = self.roll_gender()
@@ -86,6 +87,7 @@ class person:
 		else:
 			self.age = self.age + 1
 			self.roll_income()
+			self.networth += self.income * 0.1
 	def life_data(self):
 		data = []
 		while(self.alive):
@@ -95,7 +97,7 @@ class person:
 				"race":self.race,
 				"name":self.name,
 				"income":self.income,
-				"networth":1000000
+				"networth":self.networth
 			})
 			self.step_year()
 		return data
