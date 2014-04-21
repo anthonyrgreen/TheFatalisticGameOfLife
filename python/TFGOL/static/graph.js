@@ -101,7 +101,7 @@ function hover(year) {
 function draw_graph () {
 	var d1 = [],
 		d2 = [];
-	console_log("person_life.length: " + person_life.length.toString());
+	console.log("person_life.length: " + person_life.length.toString());
 	for(var i = 0; i < person_life.length; i++) {
 		console.log("DRAW_GRAPH: person_life[" + i + "].networth = " + person_life[i].networth.toString());
 		console.log("DRAW_GRAPH: person_life[" + i + "].income = " + person_life[i].income.toString());
