@@ -10,5 +10,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+	url(r'^about/', views.aboutpage),
+	url(r'^disclaimer/', views.disclaimerpage),
     url(r'^', views.mainpage)
+
 )

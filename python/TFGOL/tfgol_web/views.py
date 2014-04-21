@@ -34,17 +34,23 @@ def mainpage(request):
 
 	return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth, 'job':p.career })
 
+<<<<<<< HEAD
 def person_from_birth(request):
 	average_joe = person()
 	joe.from_womb()
 #	response = JsonResponse(joe.life_data())
 	response = json.dumps(joe.life_data(), separators=(',', ': '))
-	return render(request, 'index.html', joe.response)
+	return render(request, 'index.html', response)
 
 def person_from_midlife(request):
 	data = json.loads(request.body)
 	average_joe = person()
 	joe.from_midlife(data)
 	response = json.dumps(joe.life_data(), separators=(',', ': '))
-	return render(request, 'index.html', joe.response)
-	response = json.dumps(joe.
+	return render(request, 'index.html', response)
+
+def aboutpage(request):
+	return render(request, 'about.html',{})
+
+def disclaimerpage(request):
+	return render(request, 'disclaimer.html',{})
