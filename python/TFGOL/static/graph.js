@@ -21,7 +21,7 @@ changed = false;
 			changed = false;
 			clear_info();
 			$.ajax({
-				type: "POST",
+				type: "GET",
 				url: "/reroll",
 				dataType: "json",
 				success: function(data){
@@ -39,7 +39,7 @@ changed = false;
 	else{
 		clear_info();	
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			url: "/roll",
 			dataType: "json",
 			success: function(data){
