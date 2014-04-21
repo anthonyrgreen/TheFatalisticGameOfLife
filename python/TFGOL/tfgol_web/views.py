@@ -33,15 +33,15 @@ def mainpage(request):
 
 def person_from_birth(request):
 	average_joe = person()
-	joe.from_womb()
-	response = json.dumps(joe.life_data(), separators=(',', ': '))
+	average_oe.from_womb()
+	response = json.dumps(average_joe.life_data(), separators=(',', ': '))
 	return HttpResponse(response, mimetype="application/json")
 
 def person_from_midlife(request):
 	data = json.loads(request.body)
 	average_joe = person()
-	joe.from_midlife(data)
-	response = json.dumps(joe.life_data(), separators=(',', ': '))
+	average_joe.from_midlife(data)
+	response = json.dumps(average_joe.life_data(), separators=(',', ': '))
 	return HttpResponse(response, mimetype="application/json")
 
 def aboutpage(request):
