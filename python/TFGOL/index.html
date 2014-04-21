@@ -36,14 +36,18 @@
 			document.getElementById("race_div").innerHTML = race_string[new_race];
 		}
 		document.addEventListener('keydown', function(event) {
+			  // left
 			if(event.keyCode == 37 && using_editor && current_year > 0) {
 				load_year(current_year-1);
-			}
+			} // right
 			else if(event.keyCode == 39 && using_editor && current_year < person_life.length-1) {
 				load_year(current_year+1);
-			}
+			} // esc
 			else if(event.keyCode == 27 && using_editor) {
 				clear_info();
+			} // return
+			else if(event.keyCode == 13 && using_editor) {
+				save_and_reroll();
 			}
 		});
 	</script>
