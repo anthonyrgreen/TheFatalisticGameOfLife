@@ -21,7 +21,25 @@ class person:
 		self.alive = True
 		self.income_percentile = random.uniform(0, 1)
 	def from_midlife(self, data):
-		
+		self.gender = data["gender"]
+		self.race = data["race"]
+		self.name = data["name"]
+		self.income = int(data["income"]) # (int)?
+		self.age = int(data["age"]) # (int)?
+		self.alive = True
+		self.income_percentile = random.uniform(0, 1) # does this work?
+	def life_data(self):
+		records = []
+		while(self.alive):
+			records.append({
+				"gender" : self.gender,
+				"race" : self.race,
+				"name" : self.name,
+				"income" : self.income,
+				"age" : self.age,
+				"income_percentile" : self.income_percentile})
+			self.step_year()
+		return records
 	def roll_race(self):
 		# These stats come from the wiki page for "Demographics of the United States"
 		# -- note that the Hispanic population is over-represented by about 3% because 
