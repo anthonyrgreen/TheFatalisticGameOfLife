@@ -25,9 +25,17 @@ changed = false;
 				url: "/reroll/",
 				dataType: "json",
 				success: function(data){
+					person_life.length = data[0]["age"]
 					var item = data.list;
 					for(var i = 0; i < data.count; i++){
-						person_life.push(data[i]);
+						var person_year = new Person_Year();
+						person_year.name = data[i]["name"];
+						person_year.gender = data[i]["gender"];
+						person_year.occupation = "Engineer";
+						person_year.race = data[i]["race"];
+						person_year.income = data[i]["income"];
+						person_year.networth = data[i]["networth"];
+						person_life.push(person_year);
 					}
 					draw_graph();
 				}
