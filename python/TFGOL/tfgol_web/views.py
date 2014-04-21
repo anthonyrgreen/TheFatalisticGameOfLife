@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from models import ZipCode, Job, WorksIn
 from django.db.models import Sum
-
+import json
 import random
-from tfgol_web.new_person import Person
+from tfgol_web.new_person import person
 
 # Create your views here.
 
@@ -22,14 +22,7 @@ def randomZip():
 
 def mainpage(request):
 
-	zip = randomZip()
-
-	p = Person(zip)
-
-	p.step()
-	p.step()
-
-	return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth, 'job':p.career })
+	return render(request, 'index.html', { 'name': 'carl' })
 
 def person_from_birth(request):
 	average_joe = person()
