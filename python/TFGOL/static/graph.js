@@ -48,8 +48,8 @@ changed = false;
 					person_life.push(data[i]);
 				}
 				draw_graph()
-			});
-		}
+			}
+		});
 		//gen_new_data(-1);
 		//draw_graph();
 	}
