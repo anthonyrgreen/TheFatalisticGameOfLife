@@ -34,11 +34,9 @@ def mainpage(request):
 
 	return render(request, 'index.html', { 'name': p.name, 'income':p.income, 'networth':p.networth, 'job':p.career })
 
-<<<<<<< HEAD
 def person_from_birth(request):
 	average_joe = person()
 	joe.from_womb()
-#	response = JsonResponse(joe.life_data())
 	response = json.dumps(joe.life_data(), separators=(',', ': '))
 	return render(request, 'index.html', response)
 
