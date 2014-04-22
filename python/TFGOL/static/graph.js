@@ -157,7 +157,8 @@ function hover(year) {
 						+ parseInt(person_life[year].networth) + "<br><b>Occupation</b> " + person_life[year].occupation;
 	
 	$("#hover_info").css("display", "table-row-group");
-	$("hover_info").html(html);
+	$("#hover_info").show();
+	$("#hover_info").html(html);
 
 /*	document.getElementById("hover_info").style.display = 'table-row-group';
 	document.getElementById("hover_info").innerHTML = "<b>Name</b> " + person_life[year].name + '<br>';
