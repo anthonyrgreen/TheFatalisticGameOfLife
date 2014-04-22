@@ -100,14 +100,20 @@ function add_commas(num) {
 }
 function load_year(year){
 	// hides arrows when at max/min age
-	if(current_year == person_life.length - 1)
+	console.log(year);
+	console.log(person_life.length);
+	if(year >= person_life.length || year < 0) return;
+	if(year == person_life.length - 1)
 		$("#right_arrow").hide();
 	else
 		$("#right_arrow").show();
-	if(current_year == 0)
+	if(year == 0)
 		$("#left_arrow").hide();
 	else
 		$("#left_arrow").show();
+
+
+	current_year = year;
 	$("#modal_title").html(person_life[year].name);
 	$("#age_div").html(year);
 	$("#race_box").val( person_life[year].race );
