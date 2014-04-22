@@ -20,10 +20,11 @@
 			using_editor = false;
 			
 		function toggle_gender(){
+			
 			new_gender++;
 			if(new_gender > GenderEnum.FEMALE)
 				new_gender = GenderEnum.MALE;
-			if(new_gender == GenderEnum.MALE)
+			if(new_gender === GenderEnum.MALE)
 				$("#gender_img").html('<img src="/images/male.png" width="60px" height="60px"/>')
 			else
 				$("#gender_img").html('<img src="/images/female.png" width="60px" height="60px"/>')
@@ -77,7 +78,7 @@
 				<div id="age_div" style="font-size:150%"></div>
 			</div>
 			<div class="modal_elt" style="cursor:pointer;" onclick="toggle_race()" onmousedown="this.style.background='#cccccc'" onmouseup="this.style.background='#eeeeee'">Race
-				<div id="race_div" style="font-size:150%"><input type="text" id="race_box" value=""></input></div>
+				<div id="race_div" style="font-size:150%"><select id="race_box"><option value="White">White</option><option value="Black">Black</option><option value="Hispanic">Hispanic</option><option value="Asian">Asian</option></select></div>
 			</div>
 		</div>
 		<div style="position:relative;width:100%;top:10px;">
