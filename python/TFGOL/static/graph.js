@@ -226,6 +226,9 @@ function draw_graph () {
 		},
 		grid: {
 			outlineWidth: 0
+		},
+		legend: {
+			position: 'ne'
 		}
 	});
 	
