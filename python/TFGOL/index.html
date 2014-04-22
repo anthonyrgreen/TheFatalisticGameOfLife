@@ -10,10 +10,10 @@
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-     <script type="text/javascript" src="/flotr2/flotr2.min.js"></script>
-	 <script type="text/javascript" src="/roll_data.js"></script>
-     <script type="text/javascript" src="/graph.js"></script>
-	 <script>
+  <script type="text/javascript" src="/flotr2/flotr2.min.js"></script>
+	<script type="text/javascript" src="/roll_data.js"></script>
+  <script type="text/javascript" src="/graph.js"></script>
+	<script>
 		var new_gender = 0,
 			new_race = 0,
 			current_year = 0,
@@ -24,16 +24,16 @@
 			if(new_gender > GenderEnum.FEMALE)
 				new_gender = GenderEnum.MALE;
 			if(new_gender == GenderEnum.MALE)
-				document.getElementById("gender_img").innerHTML = '<img src="/images/male.png" width="60px" height="60px"/>';
+				$("#gender_img").html('<img src="/images/female.png" width="60px" height="60px"/>')
 			else
-				document.getElementById("gender_img").innerHTML = '<img src="/images/female.png" width="60px" height="60px"/>';
+				$("#gender_img").html('<img src="/images/female.png" width="60px" height="60px"/>')
 		}
 		function toggle_race() {
-			//new_race++;
-			//if(new_race > RaceEnum.HISPANIC)
-			//	new_race = RaceEnum.WHITE;
+			new_race++;
+			if(new_race > RaceEnum.HISPANIC)
+				new_race = RaceEnum.WHITE;
 			
-			//document.getElementById("race_div").innerHTML = race_string[new_race];
+			$("#race_div).html(race_string[new_race]);
 		}
 		document.addEventListener('keydown', function(event) {
 			  // left
@@ -47,7 +47,8 @@
 				clear_info();
 			} // return
 			else if(event.keyCode == 13 && using_editor) {
-				save_and_reroll();
+				//save_and_reroll();
+				reroll();
 			}
 		});
 	</script>
@@ -99,7 +100,8 @@
 			<div class="xdiv" style="position:absolute;top:22px;transform:rotate(135deg);-ms-transform:rotate(135deg);-webkit-transform: rotate(135deg);"></div>
 		</div>
 		<div style="position:absolute;bottom:0px;width:100%;height:45px;font-size:170%;color:white" >
-			<div id="save_button" class="save_reroll_button" onclick="save_and_reroll()">Save and Re-roll</div>
+<!--			<div id="save_button" class="save_reroll_button" onclick="save_and_reroll()">Save and Re-roll</div>	-->
+			<div id="save_button" class="save_reroll_button" onclick="reroll()">Save and Re-roll</div>
 		</div>
 	</div>
 	<script>	
