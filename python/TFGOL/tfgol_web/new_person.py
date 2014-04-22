@@ -25,9 +25,9 @@ class person:
 		self.gender = data["gender"]
 		self.race = data["race"]
 		self.name = data["name"]
-		self.income = int(data["income"])
+		self.income = float(data["income"])
 		self.age = int(data["age"])
-		self.networth = int(data["networth"])
+		self.networth = float(data["networth"])
 		self.alive = True
 		self.income_percentile = random.uniform(0, 1)
 	def roll_race(self):

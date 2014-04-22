@@ -29,9 +29,9 @@ function reroll(){
 			var current_person = {
 				"age":current_year,
 				"name":person_life[current_year].name,
-				"gender":person_life[current_year].gender,
-				"race":person_life[current_year].race,
-				"income":person_life[current_year].income,
+				"gender":gender_string[new_gender],
+				"race":$("#race_box").val(),
+				"income":$("#income_box").val(),
 				"networth":person_life[current_year].networth
 			};
 			$.ajax({
