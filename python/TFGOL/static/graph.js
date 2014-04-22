@@ -51,7 +51,7 @@ function reroll(){
 						var person_year = new Person_Year();
 						person_year.name = data[i]["name"];
 						person_year.gender = data[i]["gender"];
-						person_year.occupation = "Engineer";
+						person_year.occupation = data[i]["job"];
 						person_year.race = data[i]["race"];
 						person_year.income = data[i]["income"];
 						person_year.networth = data[i]["networth"];
@@ -82,7 +82,7 @@ function reroll(){
 					var person_year = new Person_Year();
 					person_year.name = data[i]["name"];
 					person_year.gender = data[i]["gender"];
-					person_year.occupation = "Engineer";
+					person_year.occupation = data[i]["job"];
 					person_year.race = data[i]["race"];
 					person_year.income = data[i]["income"];
 					person_year.networth = data[i]["networth"];

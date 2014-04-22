@@ -8,6 +8,7 @@ from scipy.special import gammainc, gammaincinv
 import income_table
 import death_table
 import name_table
+import job_table
 
 def income_prob_density_func(gender, race, age):
 	(inc_med, inc_mean) = income_table.get_income(gender, race, age)
@@ -36,3 +37,6 @@ def death_prob(gender, age):
 
 def get_name(gender):
 	return name_table.get_name(gender)
+
+def get_job():
+	return job_table.get_job()
