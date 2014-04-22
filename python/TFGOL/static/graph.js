@@ -38,7 +38,7 @@ function reroll(){
 				type: "POST",
 				data: current_person,
 				url: "/reroll/",
-				dataType: "json",
+				dataType: "application/json",
 				success: function(data){
 					person_life.length = data[0]["age"]
 					var item = data.list;
@@ -143,12 +143,12 @@ function click_data(year) {
  
 function save_and_reroll(){
 	changed = true;
-	
-	person_life[current_year].gender = new_gender;
+	reroll();
+/*	person_life[current_year].gender = new_gender;
 	person_life[current_year].race = new_race;
 	gen_new_data(current_year);
 	draw_graph();
-	clear_info();
+	clear_info();*/
  }
 
 
