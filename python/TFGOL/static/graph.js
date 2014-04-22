@@ -23,10 +23,20 @@ function reroll(){
 	if(changed) {
 		var r=confirm("Are you sure you want to re-roll?\nYour changes will be overwritten.");
 		if(r){
+			clear_info();
 			changed = false;
 			clear_info();
+			var current_person = {
+				"age":current_year,
+				"name":person_life[current_year].name,
+				"gender":person_life[current_year].gender,
+				"race":person_life[current_year].race,
+				"income":person_life[current_year].income,
+				"networth":person_life[current_year].networth
+			};
 			$.ajax({
-				type: "GET",
+				type: "POST",
+				data: current_person,
 				url: "/reroll/",
 				dataType: "json",
 				success: function(data){
@@ -45,8 +55,6 @@ function reroll(){
 					draw_graph();
 				}
 			});
-			//gen_new_data(-1);
-			//draw_graph();
 		}
 	}
 	else{
@@ -78,8 +86,6 @@ function reroll(){
 				console.log("drawn")
 			}
 		});
-		//gen_new_data(-1);
-		//draw_graph();
 	}
 }
 function add_commas(num) {
@@ -121,11 +127,6 @@ function load_year(year){
 		document.getElementById("left_arrow").style.display = 'none';
 	else 
 		document.getElementById("left_arrow").style.display = 'block';*/
-
-/*document.getElementById("modal_title").innerHTML = person_life[year].name;
-	document.getElementById("age_div").innerHTML = year;
-	document.getElementById("occupation_div").innerHTML = person_life[year].occupation;
-	document.getElementById("networth_div").innerHTML = '$' + add_commas(parseInt(person_life[year].networth));*/
 }
  
 function click_data(year) {
@@ -142,6 +143,7 @@ function click_data(year) {
  
 function save_and_reroll(){
 	changed = true;
+	
 	person_life[current_year].gender = new_gender;
 	person_life[current_year].race = new_race;
 	gen_new_data(current_year);
