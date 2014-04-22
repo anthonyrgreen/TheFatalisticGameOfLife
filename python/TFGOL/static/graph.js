@@ -23,9 +23,9 @@ function reroll(){
 	if(changed) {
 		var r=confirm("Are you sure you want to re-roll?\nYour changes will be overwritten.");
 		if(r){
+			console.log("confirmed");
 			clear_info();
 			changed = false;
-			clear_info();
 			var current_person = {
 				"age":current_year,
 				"name":person_life[current_year].name,
@@ -36,13 +36,18 @@ function reroll(){
 			};
 			$.ajax({
 				type: "POST",
-				data: current_person,
+				data: JSON.stringify(current_person),
 				url: "/reroll/",
-				dataType: "application/json",
-				success: function(data){
-					person_life.length = data[0]["age"]
+				dataType: "json",
+				success: function(ndata){
+					console.log("Calling callback");
+					var data = ndata;
+					person_life.length = data[0]["age"];
+					console.log("person_life.length = " + person_life.length.toString());
 					var item = data.list;
-					for(var i = 0; i < data.count; i++){
+					console.log("data.length = " + data.length.toString());
+					for(var i = 0; i < data.length; i++){
+						console.log("Adding year " + i.toString());
 						var person_year = new Person_Year();
 						person_year.name = data[i]["name"];
 						person_year.gender = data[i]["gender"];
@@ -52,6 +57,7 @@ function reroll(){
 						person_year.networth = data[i]["networth"];
 						person_life.push(person_year);
 					}
+					console.log("DRAWING");
 					draw_graph();
 				}
 			});
@@ -100,8 +106,8 @@ function add_commas(num) {
 }
 function load_year(year){
 	// hides arrows when at max/min age
-	console.log(year);
-	console.log(person_life.length);
+	//console.log(year);
+	//console.log(person_life.length);
 	if(year >= person_life.length || year < 0) return;
 	if(year == person_life.length - 1)
 		$("#right_arrow").hide();
@@ -148,6 +154,7 @@ function click_data(year) {
  }
  
 function save_and_reroll(){
+	console.log("IN SAVE_AND_REROLL()");
 	changed = true;
 	reroll();
 /*	person_life[current_year].gender = new_gender;

@@ -5,6 +5,7 @@ from django.db.models import Sum
 import json
 import random
 from tfgol_web.new_person import person
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -30,6 +31,7 @@ def person_from_birth(request):
 	response = json.dumps(average_joe.life_data() )#, separators=(',', ': '))
 	return HttpResponse(response, mimetype="application/json")
 
+@csrf_exempt
 def person_from_midlife(request):
 	data = json.loads(request.body)
 	average_joe = person()
