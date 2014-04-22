@@ -33,10 +33,11 @@
 			if(new_race > RaceEnum.HISPANIC)
 				new_race = RaceEnum.WHITE;
 			
-			$("#race_div).html(race_string[new_race]);
+			$("#race_div").html(race_string[new_race]);
 		}
 		document.addEventListener('keydown', function(event) {
-			  // left
+			// left
+			console.log(event.keyCode);	
 			if(event.keyCode == 37 && using_editor && current_year > 0) {
 				load_year(current_year-1);
 			} // right
@@ -47,8 +48,8 @@
 				clear_info();
 			} // return
 			else if(event.keyCode == 13 && using_editor) {
-				//save_and_reroll();
-				reroll();
+				save_and_reroll();
+				//reroll();
 			}
 		});
 	</script>
@@ -100,8 +101,8 @@
 			<div class="xdiv" style="position:absolute;top:22px;transform:rotate(135deg);-ms-transform:rotate(135deg);-webkit-transform: rotate(135deg);"></div>
 		</div>
 		<div style="position:absolute;bottom:0px;width:100%;height:45px;font-size:170%;color:white" >
-<!--			<div id="save_button" class="save_reroll_button" onclick="save_and_reroll()">Save and Re-roll</div>	-->
-			<div id="save_button" class="save_reroll_button" onclick="reroll()">Save and Re-roll</div>
+			<div id="save_button" class="save_reroll_button" onclick="save_and_reroll()">Save and Re-roll</div>	
+<!--			<div id="save_button" class="save_reroll_button" onclick="reroll()">Save and Re-roll</div> -->
 		</div>
 	</div>
 	<script>	
