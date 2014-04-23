@@ -216,7 +216,13 @@ function draw_graph () {
 	
 	// Draw the graph
 	Flotr.draw(
-	container, [d1, d2], {
+	container, [{
+		data: d1,
+		label: 'Net Worth'
+	}, {
+		data: d2,
+		label: 'Salary'
+	}], {
 		bars: {
 			show: true,
 			shadowSize: 0,
@@ -245,7 +251,7 @@ function draw_graph () {
 			outlineWidth: 0
 		},
 		legend: {
-			position: 'ne'
+			position: 'nw'
 		}
 	});
 	
