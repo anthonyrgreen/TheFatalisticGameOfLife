@@ -15,6 +15,7 @@ class person:
 	def from_womb(self):
 		random.seed()
 		self.gender = self.roll_gender()
+		self.job = dist.get_job();
 		self.race = self.roll_race()
 		self.name = self.roll_name()
 		self.income = 0
@@ -28,6 +29,7 @@ class person:
 		self.income = float(data["income"])
 		self.age = int(data["age"])
 		self.networth = float(data["networth"])
+		self.job = data["job"]
 		self.alive = True
 		self.income_percentile = random.uniform(0, 1)
 	def roll_race(self):
@@ -98,7 +100,8 @@ class person:
 				"race":self.race,
 				"name":self.name,
 				"income":self.income,
-				"networth":self.networth
+				"networth":self.networth,
+				"job":self.job,
 			})
 			self.step_year()
 		return data

@@ -32,7 +32,8 @@ function reroll(){
 				"gender":gender_string[new_gender],
 				"race":$("#race_box").val(),
 				"income":$("#income_box").val(),
-				"networth":person_life[current_year].networth
+				"networth":person_life[current_year].networth,
+					"job":person_life[current_year].occupation
 			};
 			$.ajax({
 				type: "POST",
@@ -51,7 +52,7 @@ function reroll(){
 						var person_year = new Person_Year();
 						person_year.name = data[i]["name"];
 						person_year.gender = data[i]["gender"];
-						person_year.occupation = "Engineer";
+						person_year.occupation = data[i]["job"];
 						person_year.race = data[i]["race"];
 						person_year.income = data[i]["income"];
 						person_year.networth = data[i]["networth"];
@@ -82,7 +83,7 @@ function reroll(){
 					var person_year = new Person_Year();
 					person_year.name = data[i]["name"];
 					person_year.gender = data[i]["gender"];
-					person_year.occupation = "Engineer";
+					person_year.occupation = data[i]["job"];
 					person_year.race = data[i]["race"];
 					person_year.income = data[i]["income"];
 					person_year.networth = data[i]["networth"];
@@ -126,9 +127,25 @@ function load_year(year){
 	$("#occupation_div").html(person_life[year].occupation);
 	$("#income_box").val(person_life[year].income);
 	$("#networth_div").html("$" + add_commas(parseInt(person_life[year].networth)));
-	
-	new_gender = !person_life[year].gender;
+
+	//toggle_gender does render AND changes so need to set to opposite
+	if(person_life[year].gender === 'Male'){
+		new_gender = GenderEnum.FEMALE;
+	}else{
+		new_gender = GenderEnum.MALE;
+	}
+
 	toggle_gender();
+	/*	
+	if('Male' === person_life[year].gender){
+		$("#gender_img").html('<img src="/images/male.png" width="60px" height="60px"/>')
+		new_gender = GenderEnum.MALE;
+			
+	}else{
+		new_gender = GenderEnum.FEMALE)
+		$("#gender_img").html('<img src="/images/female.png" width="60px" height="60px"/>')
+	}
+*/	
 	new_race = person_life[year].race;
 
 /*	if(current_year == person_life.length - 1)
@@ -226,6 +243,9 @@ function draw_graph () {
 		},
 		grid: {
 			outlineWidth: 0
+		},
+		legend: {
+			position: 'ne'
 		}
 	});
 	
