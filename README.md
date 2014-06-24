@@ -1,5 +1,5 @@
-TheFatalisticGameOfLife
-=======================
+the_fatalistic_game_of_life
+===========================
 
 Actuarial statistics toy.
 

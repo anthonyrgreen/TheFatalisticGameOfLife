@@ -12,6 +12,6 @@ mysql -u root -p < db_setup.sql
 virtualenv ../venv
 source ../venv/bin/activate
 
-pip install -r pip_requirements.txt
+pip install -r requirements.txt
 
 python python/TFGOL/manage.py syncdb

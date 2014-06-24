@@ -51,9 +51,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'TFGOL.urls'
+ROOT_URLCONF = 'tfgol.urls'
 
-WSGI_APPLICATION = 'TFGOL.wsgi.application'
+WSGI_APPLICATION = 'tfgol.wsgi.application'
 
 
 # Database
@@ -98,7 +98,7 @@ STATICFILES_FINDERS = (
 )
 
 TEMPLATE_DIRS = (
-	'/home/ec2-user/eecs493/TheFatalisticGameOfLife/python/TFGOL/',
+	'/home/ec2-user/eecs493/the_fatalistic_game_of_life/python/tfgol/',
 )
 
 
